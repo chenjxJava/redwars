@@ -33,27 +33,39 @@ public class CityRestController {
 
 
     @RequestMapping(value = "/api/city/{id}", method = RequestMethod.GET)
-    public City findOneCity(@PathVariable("id") Long id) {
-        return cityService.findCityById(id);
+    public ResultBody findOneCity(@PathVariable("id") Long id) throws GlobalErrorInfoException {
+        if(StringUtils.isEmpty(id)) {
+            throw new GlobalErrorInfoException(CityErrorInfoEnum.PARAMS_NO_COMPLETE);
+        }
+        City cityById = cityService.findCityById(id);
+        return new ResultBody(cityById);
     }
 
     @RequestMapping(value = "/api/city", method = RequestMethod.GET)
-    public List<City> findAllCity() {
-        return cityService.findAllCity();
+    public ResultBody findAllCity() {
+        List<City> allCity = cityService.findAllCity();
+        return new ResultBody(allCity);
     }
 
     @RequestMapping(value = "/api/city", method = RequestMethod.POST)
-    public void createCity(@RequestBody City city) {
-        cityService.saveCity(city);
+    public ResultBody createCity(@RequestBody City city) {
+        city.setId(null);
+        Boolean save = cityService.saveCity(city) >0;
+        return new ResultBody(save);
     }
 
     @RequestMapping(value = "/api/city", method = RequestMethod.PUT)
-    public void modifyCity(@RequestBody City city) {
-        cityService.updateCity(city);
+    public ResultBody modifyCity(@RequestBody City city) {
+        boolean update = cityService.updateCity(city) > 0;
+        return new ResultBody(update);
     }
 
     @RequestMapping(value = "/api/city/{id}", method = RequestMethod.DELETE)
-    public void modifyCity(@PathVariable("id") Long id) {
-        cityService.deleteCity(id);
+    public ResultBody modifyCity(@PathVariable("id") Long id) throws GlobalErrorInfoException {
+        if(StringUtils.isEmpty(id)) {
+            throw new GlobalErrorInfoException(CityErrorInfoEnum.PARAMS_NO_COMPLETE);
+        }
+        boolean delete = cityService.deleteCity(id) > 0;
+        return new ResultBody(delete);
     }
 }
