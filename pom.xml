@@ -24,6 +24,7 @@
         <java.version>1.8</java.version>
         <mysql-connector>5.1.39</mysql-connector>
         <mybatis-spring-boot>1.2.0</mybatis-spring-boot>
+        <springfox.version>2.7.0</springfox.version>
     </properties>
 
     <dependencies>
@@ -44,7 +45,26 @@
             <artifactId>mybatis-spring-boot-starter</artifactId>
             <version>${mybatis-spring-boot}</version>
         </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-activemq</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.activemq</groupId>
+            <artifactId>activemq-pool</artifactId>
+            <!-- <version>5.7.0</version> -->
+        </dependency>
 
+        <dependency>
+            <groupId>io.springfox</groupId>
+            <artifactId>springfox-swagger2</artifactId>
+            <version>${springfox.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>io.springfox</groupId>
+            <artifactId>springfox-swagger-ui</artifactId>
+            <version>${springfox.version}</version>
+        </dependency>
 
         <dependency>
             <groupId>org.springframework.boot</groupId>
