@@ -5,6 +5,7 @@ import com.chenjx.redwars.domain.City;
 import com.chenjx.redwars.result.GlobalErrorInfoException;
 import com.chenjx.redwars.result.ResultBody;
 import com.chenjx.redwars.service.CityService;
+import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,13 +19,15 @@ import java.util.List;
  *
  * Created by bysocket on 07/02/2017.
  */
+@Api(value = "CityController", tags = {"城市操作接口"})
 @RestController
 public class CityRestController {
 
     @Autowired
     private CityService cityService;
 
-    @ApiOperation(value = "获取城市列表", notes = "获取城市列表")
+    @ApiOperation(value = "获取城市信息", notes = "根据城市名称获取城市信息")
+    @ApiImplicitParam(name = "cityName",value = "城市名称", required = true, dataType = "String")
     @RequestMapping(value = "/api/citybyname", method = RequestMethod.GET)
     public ResultBody findOneCity(@RequestParam(value = "cityName", required = true) String cityName) throws GlobalErrorInfoException {
         if(StringUtils.isEmpty(cityName)) {
@@ -44,8 +47,7 @@ public class CityRestController {
         return new ResultBody(cityById);
     }
 
-    @ApiOperation(value="创建城市对象", notes = "根据City创建城市对象")
-    @ApiImplicitParam(name = "User", value = "城市详细信息", required = true, dataType = "User")
+    @ApiOperation(value="获取所有城市对象", notes = "获取所有城市对象")
     @RequestMapping(value = "/api/city", method = RequestMethod.GET)
     public ResultBody findAllCity() {
         List<City> allCity = cityService.findAllCity();

@@ -11,7 +11,7 @@ import javax.jms.Destination;
 /**
  * create by chenjx 2018/7/17
  */
-//@Service("producer")
+@Service("producer")
 public class Producer {
     @Autowired
     private JmsMessagingTemplate jmsTemplate;

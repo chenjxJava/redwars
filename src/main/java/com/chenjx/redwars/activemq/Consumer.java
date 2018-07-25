@@ -6,7 +6,7 @@ import org.springframework.stereotype.Component;
 /**
  * create by chenjx 2018/7/17
  */
-//@Component
+@Component
 public class Consumer {
     @JmsListener(destination = "mytest.queue")
     public void receiveQueue(String text) {
