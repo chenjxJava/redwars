@@ -25,7 +25,7 @@ public class SpringbootJmsApplicationTest {
         Destination activeMQQueue = new ActiveMQQueue("mytest.queue");
 
         for (int i = 0; i < 100; i++) {
-            producer.sendMessage(activeMQQueue,i+"...myname is chenjx!!!");
+            producer.sendMessage(activeMQQueue, i + "...myname is chenjx!!!");
         }
     }
 

@@ -7,7 +7,7 @@ import java.util.List;
 
 /**
  * 城市 DAO 接口类
- *
+ * <p>
  * Created by bysocket on 07/02/2017.
  */
 public interface CityDao {
@@ -18,6 +18,7 @@ public interface CityDao {
      * @param cityName 城市名
      */
     City findByName(@Param("cityName") String cityName);
+
     /**
      * 获取城市信息列表
      *

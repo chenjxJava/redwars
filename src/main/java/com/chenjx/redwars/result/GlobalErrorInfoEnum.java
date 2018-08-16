@@ -2,10 +2,10 @@ package com.chenjx.redwars.result;
 
 /**
  * 应用系统级别的错误码
- *
+ * <p>
  * Created by bysocket on 14/03/2017.
  */
-public enum GlobalErrorInfoEnum implements ErrorInfoInterface{
+public enum GlobalErrorInfoEnum implements ErrorInfoInterface {
     SUCCESS("0", "success"),
     NOT_FOUND("-1", "service not found");
 
@@ -18,11 +18,11 @@ public enum GlobalErrorInfoEnum implements ErrorInfoInterface{
         this.message = message;
     }
 
-    public String getCode(){
+    public String getCode() {
         return this.code;
     }
 
-    public String getMessage(){
+    public String getMessage() {
         return this.message;
     }
 }

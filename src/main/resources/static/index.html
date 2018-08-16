@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:v-bind="http://www.w3.org/1999/xhtml" xmlns:v-on="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script type="application/javascript" src="./vue.min.js"></script>
+</head>
+
+<body>
+<div id="app">
+    <p>{{message}}</p>
+    <input type="text" v-model="message">
+</div>
+<div id="app1">
+    <p v-if="yes">
+        你好吗
+    </p>
+    <p v-else>
+        我很好
+    </p>
+</div>
+<div id="app2">
+    <ul>
+        <li v-for="(item, index) in temp">
+            {{index}}:{{item.name}}/{{item.sex}}/{{item.age}}
+        </li>
+    </ul>
+</div>
+<div id="app3">
+    <a v-bind:href="url">{{url}}</a>
+</div>
+<div id="app4">
+    <input type="button" v-on:click="cl(temp)" value="提交">
+</div>
+</body>
+<script>
+    var exampleData = {
+        message: 'Hello world'
+    }
+    var yesData = {
+        yes: true
+    }
+    new Vue({
+        el: '#app',
+        data: exampleData
+    });
+    new Vue({
+        el: '#app1',
+        data: yesData
+    })
+
+    new Vue({
+        el: '#app2',
+        data: {
+            temp: [
+                {"name": "always", "age": 18, "sex": "female"},
+                {"name": "never", "age": 20, "sex": "male"}
+            ]
+        }
+    });
+    new Vue({
+        el: '#app3',
+        data: {url: "http://www.baidu.com"}
+    });
+    new Vue({
+        el: '#app4',
+        data: {temp: "hhhhh"},
+        methods: {
+            cl: function (t) {
+                alert(t)
+            }
+        }
+    });
+</script>
+</html>

@@ -2,7 +2,7 @@ package com.chenjx.redwars.result;
 
 /**
  * 返回体
- *
+ * <p>
  * Created by bysocket on 14/03/2017.
  */
 public class ResultBody {

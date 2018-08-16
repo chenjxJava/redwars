@@ -21,7 +21,7 @@ public class Producer {
     }
 
     @JmsListener(destination = "out.queue")
-    public void consumerMessage(String text){
+    public void consumerMessage(String text) {
         System.out.println("从out.queue队列中收到的回复报文为：" + text);
     }
 }
