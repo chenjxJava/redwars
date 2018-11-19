@@ -1,6 +1,6 @@
 package com.chenjx.redwars.rest;
 
-import com.chenjx.redwars.constant.CityErrorInfoEnum;
+import com.chenjx.redwars.result.CityErrorInfoEnum;
 import com.chenjx.redwars.domain.City;
 import com.chenjx.redwars.result.GlobalErrorInfoException;
 import com.chenjx.redwars.result.ResultBody;
@@ -9,7 +9,6 @@ import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.converter.json.MappingJacksonValue;
 import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.*;
 
@@ -69,7 +68,7 @@ public class CityRestController {
     }
 
     @RequestMapping(value = "/api/city/{id}", method = RequestMethod.DELETE)
-    public ResultBody modifyCity(@PathVariable("id") Long id) throws GlobalErrorInfoException {
+    public ResultBody deleteCity(@PathVariable("id") Long id) throws GlobalErrorInfoException {
         if (StringUtils.isEmpty(id)) {
             throw new GlobalErrorInfoException(CityErrorInfoEnum.PARAMS_NO_COMPLETE);
         }

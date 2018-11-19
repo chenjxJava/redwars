@@ -1,7 +1,5 @@
-package com.chenjx.redwars.constant;
+package com.chenjx.redwars.result;
 
-
-import com.chenjx.redwars.result.ErrorInfoInterface;
 
 /**
  * 业务错误码 案例

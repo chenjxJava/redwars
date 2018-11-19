@@ -25,6 +25,9 @@
         <mysql-connector>5.1.39</mysql-connector>
         <mybatis-spring-boot>1.2.0</mybatis-spring-boot>
         <springfox.version>2.6.1</springfox.version>
+        <common.net>3.3</common.net>
+        <python.jython>2.7.0</python.jython>
+        <druid.springboot>1.1.1</druid.springboot>
     </properties>
 
     <dependencies>
@@ -42,7 +45,7 @@
         <dependency>
             <groupId>com.alibaba</groupId>
             <artifactId>druid-spring-boot-starter</artifactId>
-            <version>1.1.1</version>
+            <version>${druid.springboot}</version>
         </dependency>
 
         <!-- Spring Boot Mybatis 依赖 -->
@@ -55,11 +58,11 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-activemq</artifactId>
         </dependency>
-        <dependency>
-            <groupId>org.apache.activemq</groupId>
-            <artifactId>activemq-pool</artifactId>
-            <!-- <version>5.7.0</version> -->
-        </dependency>
+        <!--<dependency>-->
+            <!--<groupId>org.apache.activemq</groupId>-->
+            <!--<artifactId>activemq-pool</artifactId>-->
+            <!--&lt;!&ndash; <version>5.7.0</version> &ndash;&gt;-->
+        <!--</dependency>-->
 
 
         <!--spring整合swagger2-->
@@ -80,10 +83,25 @@
         </dependency>
 
         <dependency>
+            <groupId>commons-net</groupId>
+            <artifactId>commons-net</artifactId>
+            <version>${common.net}</version>
+        </dependency>
+
+        <!--测试依赖-->
+        <dependency>
+            <groupId>org.python</groupId>
+            <artifactId>jython-standalone</artifactId>
+            <version>${python.jython}</version>
+            <scope>test</scope>
+        </dependency>
+
+        <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
             <scope>test</scope>
         </dependency>
+
     </dependencies>
 
     <build>

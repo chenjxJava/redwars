@@ -1,4 +1,4 @@
-package com.chenjx.redwars;
+package com.chenjx.redwars.config;
 
 /**
  * create by chenjx 2018/8/16
@@ -22,7 +22,7 @@ public class DruidConfiguration {
         //设置ip黑名单，如果allow与deny共同存在时,deny优先于allow
         servletRegistrationBean.addInitParameter("deny","192.168.0.19");
         //设置控制台管理用户
-        servletRegistrationBean.addInitParameter("loginUsername","druid");
+        servletRegistrationBean.addInitParameter("loginUsername","admin");
         servletRegistrationBean.addInitParameter("loginPassword","123456");
         //是否可以重置数据
         servletRegistrationBean.addInitParameter("resetEnable","false");
