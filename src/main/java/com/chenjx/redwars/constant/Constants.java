@@ -8,6 +8,6 @@ public class Constants {
     public final static String TOKEN = "toke_";
 
     // token 失效时间
-    public final static Long EXP_TIMES = 30L;
+    public final static Long EXP_TIMES = 1800L;
 
 }

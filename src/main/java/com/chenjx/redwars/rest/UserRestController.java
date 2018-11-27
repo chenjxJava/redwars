@@ -7,6 +7,7 @@ import com.chenjx.redwars.domain.User;
 import com.chenjx.redwars.result.*;
 import com.chenjx.redwars.service.UserService;
 import com.chenjx.redwars.utils.MD5;
+import com.chenjx.redwars.utils.RedisOperationUtils;
 import com.chenjx.redwars.utils.UUIDUtil;
 import io.swagger.annotations.Api;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -33,7 +34,7 @@ public class UserRestController {
     public UserService userService;
 
     @Autowired
-    public StringRedisTemplate stringRedisTemplate;
+    public RedisOperationUtils redisOperationUtils;
 
     /**
      * 登入接口
@@ -68,11 +69,9 @@ public class UserRestController {
             throw new GlobalErrorInfoException(UserErrorInfoEnum.LOGIN_ERROR);
         }
         String uuid = UUIDUtil.getUUID();
-        ResultBody resultBody = new ResultBody(uuid);
-        resultBody.setMessage("login success");
 
-        stringRedisTemplate.opsForValue().set(Constants.TOKEN + uuid, JSON.toJSONString(userDB), Constants.EXP_TIMES, TimeUnit.MINUTES);
-        return resultBody;
+        redisOperationUtils.set(Constants.TOKEN + uuid, JSON.toJSONString(userDB), Constants.EXP_TIMES);
+        return new ResultBody(uuid);
     }
 
 }
