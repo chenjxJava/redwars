@@ -9,6 +9,19 @@ spring:
       content-type: text/html
 #开发时关闭缓存,不然没法看到实时页面
     cache: false
+  redis:
+    host: 120.77.176.193
+    database: 0
+    port: 6379
+    password:
+    timeout: 0
+    jedis:
+      pool:
+        max-active: 8
+        max-wait: -1
+        max-idle: 5
+        min-idle: 0
+
 mybatis:
   type-aliases-package: com.chenjx.redwars.domain
   mapper-locations: classpath:mapper/*.xml

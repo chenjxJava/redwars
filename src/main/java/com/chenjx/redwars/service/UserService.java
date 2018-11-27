@@ -1,13 +1,14 @@
-package com.chenjx.redwars.dao;
+package com.chenjx.redwars.service;
 
 import com.chenjx.redwars.domain.User;
 import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
 
-public interface UserDao {
-
-    User findByName(@Param("username") String username);
+/**
+ * create by chenjx 2018/11/26
+ */
+public interface UserService {
 
     /**
      * 获取城市信息列表
@@ -22,7 +23,7 @@ public interface UserDao {
      * @param id
      * @return
      */
-    User findById(@Param("id") Long id);
+    User findById(Long id);
 
     Long saveUser(User user);
 
@@ -30,4 +31,7 @@ public interface UserDao {
 
     Long deleteUser(Long id);
 
+    User findByName(String username);
+
+    void login(String username, String password);
 }

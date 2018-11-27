@@ -4,14 +4,13 @@
     <resultMap id="BaseResultMap" type="com.chenjx.redwars.domain.User">
         <result column="id" property="id"/>
         <result column="username" property="username"/>
-        <result column="salt" property="salt"/>
         <result column="password" property="password"/>
     </resultMap>
 
     <parameterMap id="User" type="com.chenjx.redwars.domain.User"/>
 
     <sql id="Base_Column_List">
-        id, username, salt, password
+        id, username, password
     </sql>
 
     <select id="findByName" resultMap="BaseResultMap" parameterType="java.lang.String">
@@ -20,5 +19,46 @@
         from user
         where username = #{username}
     </select>
+
+    <select id="findById" resultMap="BaseResultMap" parameterType="java.lang.Long">
+        select
+        <include refid="Base_Column_List"/>
+        from User
+        where id = #{id}
+    </select>
+
+    <select id="findAllUser" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from user
+    </select>
+
+    <insert id="saveUser" parameterMap="User" useGeneratedKeys="true" keyProperty="id">
+        insert into
+        user(username, password)
+        values
+        (#{username},#{password})
+    </insert>
+
+    <update id="updateUser" parameterMap="User">
+        update
+        user
+        set
+        <if test="password!=null">
+            password = #{password},
+        </if>
+        <if test="username!=null">
+            username = #{username}
+        </if>
+        where
+        id = #{id}
+    </update>
+
+    <delete id="deleteUser" parameterType="java.lang.Long">
+        delete from
+        user
+        where
+        id = #{id}
+    </delete>
 
 </mapper>

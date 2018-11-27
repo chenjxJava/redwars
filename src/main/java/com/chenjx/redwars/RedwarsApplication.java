@@ -5,12 +5,14 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.boot.web.servlet.support.SpringBootServletInitializer;
+import org.springframework.cache.annotation.EnableCaching;
 import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
 @SpringBootApplication
 // mapper 接口类扫描包配置
 @MapperScan("com.chenjx.redwars.dao")
 @EnableSwagger2
+@EnableCaching
 public class RedwarsApplication extends SpringBootServletInitializer {
 
     public static void main(String[] args) {

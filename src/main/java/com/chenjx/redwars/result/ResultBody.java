@@ -1,10 +1,13 @@
 package com.chenjx.redwars.result;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
+
 /**
  * 返回体
  * <p>
  * Created by bysocket on 14/03/2017.
  */
+@JsonInclude(JsonInclude.Include.NON_NULL)
 public class ResultBody {
     /**
      * 响应代码
