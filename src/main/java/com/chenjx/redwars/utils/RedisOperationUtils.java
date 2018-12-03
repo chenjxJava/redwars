@@ -8,6 +8,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Component;
 
+import javax.annotation.Resource;
+
+
 /**
  * 在redis 与spring-data-redis 整合的时候，在使用template 方法其实还是比较的麻烦，编码量有点大
  * 在这里我们将封装template 中的一些常用方法，有使用其他的方法，直接加就可以了
@@ -29,7 +32,7 @@ public class RedisOperationUtils {
     /**
      * 引入XML 配置的template,这是必须的，我们是将template 进行的封装
      */
-    @Autowired
+    @Resource(name = "redisTemplate")
     private RedisTemplate template;
     
     

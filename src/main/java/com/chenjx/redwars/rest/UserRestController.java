@@ -2,24 +2,24 @@ package com.chenjx.redwars.rest;
 
 import com.alibaba.fastjson.JSON;
 import com.chenjx.redwars.constant.Constants;
-import com.chenjx.redwars.domain.City;
 import com.chenjx.redwars.domain.User;
-import com.chenjx.redwars.result.*;
+import com.chenjx.redwars.result.GlobalErrorInfoEnum;
+import com.chenjx.redwars.result.GlobalErrorInfoException;
+import com.chenjx.redwars.result.ResultBody;
+import com.chenjx.redwars.result.UserErrorInfoEnum;
 import com.chenjx.redwars.service.UserService;
 import com.chenjx.redwars.utils.MD5;
 import com.chenjx.redwars.utils.RedisOperationUtils;
 import com.chenjx.redwars.utils.UUIDUtil;
 import io.swagger.annotations.Api;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.util.StringUtils;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RestController;
 
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
-import java.util.UUID;
-import java.util.concurrent.TimeUnit;
 
 /**
  * create by chenjx 2018/11/26
@@ -72,6 +72,19 @@ public class UserRestController {
 
         redisOperationUtils.set(Constants.TOKEN + uuid, JSON.toJSONString(userDB), Constants.EXP_TIMES);
         return new ResultBody(uuid);
+    }
+
+    @RequestMapping(value = "/getUserByToken",method = RequestMethod.GET)
+    public ResultBody getUserByToken(HttpServletRequest request) throws GlobalErrorInfoException {
+        String token = request.getHeader("token");
+        if(StringUtils.isEmpty(token)) {
+            throw new GlobalErrorInfoException(GlobalErrorInfoEnum.NO_TOKEN);
+        }
+        String userRedis = redisOperationUtils.get(Constants.TOKEN + token);
+        if(StringUtils.isEmpty(userRedis)) {
+            throw new GlobalErrorInfoException(UserErrorInfoEnum.TOKEN_WITHOUT_RELATIVEUSER);
+        }
+        return new ResultBody(userRedis);
     }
 
 }

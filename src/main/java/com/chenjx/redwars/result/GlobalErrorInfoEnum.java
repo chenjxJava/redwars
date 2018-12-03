@@ -8,7 +8,8 @@ package com.chenjx.redwars.result;
 public enum GlobalErrorInfoEnum implements ErrorInfoInterface {
     SUCCESS("0", "success"),
     NOT_FOUND("-1", "service not found"),
-    PARAMS_NO_COMPLETE("000001", "params no complete");
+    PARAMS_NO_COMPLETE("000001", "params no complete"),
+    NO_TOKEN("000002", "no token, login first");
 
     private String code;
 

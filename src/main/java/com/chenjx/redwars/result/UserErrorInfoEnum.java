@@ -8,7 +8,8 @@ package com.chenjx.redwars.result;
  */
 public enum UserErrorInfoEnum implements ErrorInfoInterface {
     LOGIN_ERROR("000001", "username or password error"),
-    USERNAME_REPEAT("000002", "username has been registered");
+    USERNAME_REPEAT("000002", "username has been registered"),
+    TOKEN_WITHOUT_RELATIVEUSER("000003", "this token has no relative user");
 
     private String code;
 

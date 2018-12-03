@@ -10,4 +10,8 @@ public class Constants {
     // token 失效时间
     public final static Long EXP_TIMES = 1800L;
 
+    //
+    public final static String USER_LOGIN = "/api/user/login";
+
+    public static final String USER_REGISTER = "/api/user/register";
 }

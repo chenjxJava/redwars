@@ -10,8 +10,8 @@ import org.springframework.test.context.junit4.SpringRunner;
 /**
  * create by chenjx 2018/11/26
  */
-@SpringBootTest
-@RunWith(SpringRunner.class)
+//@SpringBootTest
+//@RunWith(SpringRunner.class)
 public class TestRedis {
     @Autowired
     public StringRedisTemplate stringRedisTemplate;

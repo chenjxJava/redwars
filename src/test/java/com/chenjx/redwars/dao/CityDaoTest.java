@@ -20,5 +20,7 @@ public class CityDaoTest {
     public void findByName() {
         City byName = cityDao.findByName("123");
         System.out.println(byName);
+
+        String str = "[{\"weekEndRate \":\"76.42 \",\"weekCount \":\"369\",\"dayCount \":\"774 \"}]";
     }
 }
