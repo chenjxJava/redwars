@@ -1,9 +1,12 @@
 package com.chenjx.redwars.jpython;
 
+import org.assertj.core.util.Lists;
 import org.junit.Test;
 import org.python.core.PyFunction;
 import org.python.core.PyObject;
 import org.python.util.PythonInterpreter;
+
+import java.util.ArrayList;
 
 /**
  * create by chenjx 2018/9/6
@@ -33,6 +36,7 @@ public class HelloPython {
 
     @Test
     public void demo() {
-
+        ArrayList<Object> objects = Lists.newArrayList();
+        System.out.println(objects);
     }
 }
