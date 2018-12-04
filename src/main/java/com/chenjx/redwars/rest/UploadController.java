@@ -12,10 +12,12 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import javax.servlet.http.HttpServletRequest;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.List;
@@ -84,6 +86,24 @@ public class UploadController {
     @ResponseBody
     public ResultBody list() {
         List<UploadLog> list = uploadLogService.findAllUploadLog();
+        return new ResultBody(list);
+    }
+
+    @GetMapping("/listByPage")
+    @ResponseBody
+    public ResultBody listByPage(HttpServletRequest request) {
+        int currentPage = 1;
+        int pageSize = 10;
+        String currentPageStr = request.getParameter("currentPage");
+        String pageSizeStr = request.getParameter("pageSize");
+        if(!StringUtils.isEmpty(currentPageStr)) {
+            currentPage = Integer.parseInt(currentPageStr);
+        }
+        if(!StringUtils.isEmpty(pageSizeStr)) {
+            pageSize = Integer.parseInt(pageSizeStr);
+        }
+
+        List<UploadLog> list = uploadLogService.findUploadLogsByPage(currentPage, pageSize);
         return new ResultBody(list);
     }
 

@@ -15,4 +15,5 @@ public interface UploadLogService {
 
     Long deleteUploadLog(Long id);
 
+    List<UploadLog> findUploadLogsByPage(int currentPage, int pageSize);
 }
