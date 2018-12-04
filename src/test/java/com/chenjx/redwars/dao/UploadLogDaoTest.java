@@ -23,10 +23,10 @@ public class UploadLogDaoTest {
 
 
     @Test
-    @Transactional
+//    @Transactional
     public void saveUploadLog() throws Exception {
         UploadLog uploadLog = new UploadLog();
-        uploadLog.setName("name1");
+        uploadLog.setName("哈哈哈");
         uploadLog.setPath("path1");
         uploadLogDao.saveUploadLog(uploadLog);
         System.out.println(uploadLog);
